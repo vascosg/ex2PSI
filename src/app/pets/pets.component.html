@@ -4,3 +4,13 @@
     <span class="name">{{pet.name}}</span>
   </li>
 </ul>
+
+<div>
+  <label for="new-pet">Pet name: </label>
+  <input id="new-pet" #petName />
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" class="add-button" (click)="add(petName.value); petName.value=''">
+    Add pet
+  </button>
+</div>
