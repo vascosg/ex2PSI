@@ -22,13 +22,23 @@ export class PetsComponent implements OnInit {
   }
 
   getPets(): void {
-      this.petService.getPets()
-          .subscribe(pets => this.pets = pets);
-  }
 
+    this.petService.getPets().subscribe(pets => this.pets = pets);
+  }
+/*
 add(name: string): void {
     name = name.trim();
     if (!name) { return; }
     this.pets.push({name} as Pet);
   }
+*/
+add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.petService.addPet({ name } as Pet)
+      .subscribe(pet => {
+        this.pets.push(pet);
+      });
+  }
+
 }
